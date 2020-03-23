@@ -1,6 +1,9 @@
+#import <React/RCTBridgeModule.h>
 
-#import <Foundation/Foundation.h>
+@interface RNTUmengAnalytics : NSObject <RCTBridgeModule>
 
-@interface RNTUmengAnalytics : NSObject
++ (void)init:(NSString *)appKey debug:(BOOL)debug;
+
++ (void)analytics;
 
 @end

@@ -1,46 +1,40 @@
 
-import { NativeEventEmitter, NativeModules } from 'react-native'
+import { NativeModules } from 'react-native'
 
-const { RNTUmengPush } = NativeModules
-
-const eventEmitter = new NativeEventEmitter(RNTUmengPush)
+const { RNTUmengAnalytics } = NativeModules
 
 export default {
 
-  start() {
-    RNTUmengPush.start()
+  signIn(userId, provider) {
+    RNTUmengAnalytics.signIn(userId, provider)
   },
 
-  getTags() {
-    return RNTUmengPush.getTags()
+  signOut() {
+    return RNTUmengAnalytics.signOut()
   },
 
-  addTags(tags) {
-    return RNTUmengPush.addTags(tags)
+  enterPage(pageName) {
+    return RNTUmengAnalytics.enterPage(pageName)
   },
 
-  removeTags(tags) {
-    return RNTUmengPush.removeTags(tags)
+  leavePage(pageName) {
+    return RNTUmengAnalytics.leavePage(pageName)
   },
 
-  setAlias(alias, type) {
-    return RNTUmengPush.setAlias(alias, type)
+  sendEvent(eventId) {
+    return RNTUmengAnalytics.sendEvent(eventId)
   },
 
-  addAlias(alias, type) {
-    return RNTUmengPush.addAlias(alias, type)
+  sendEventLabel(eventId, label) {
+    return RNTUmengAnalytics.sendEventLabel(eventId, label)
   },
 
-  removeAlias(alias, type) {
-    return RNTUmengPush.removeAlias(alias, type)
+  sendEventData(eventId, data) {
+    return RNTUmengAnalytics.sendEventData(eventId, data)
   },
 
-  setAdvanced(options) {
-    RNTUmengPush.setAdvanced(options)
-  },
-
-  addListener(type, listener) {
-    return eventEmitter.addListener(type, listener)
+  sendEventCounter(eventId, data, counter) {
+    return RNTUmengAnalytics.sendEventCounter(eventId, data, counter)
   },
 
 }
