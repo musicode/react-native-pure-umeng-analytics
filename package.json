@@ -1,0 +1,24 @@
+{
+  "name": "react-native-pure-umeng-analytics",
+  "version": "0.0.9",
+  "description": "react native umeng analytics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musicode/react-native-pure-umeng-analytics.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "umeng analytics"
+  ],
+  "author": "musicode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/musicode/react-native-pure-umeng-analytics/issues"
+  },
+  "homepage": "https://github.com/musicode/react-native-pure-umeng-analytics#readme"
+}
