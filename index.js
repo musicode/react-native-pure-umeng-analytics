@@ -5,6 +5,10 @@ const { RNTUmengAnalytics } = NativeModules
 
 export default {
 
+  getDeviceInfo() {
+    return RNTUmengAnalytics.getDeviceInfo()
+  },
+
   signIn(userId, provider) {
     RNTUmengAnalytics.signIn(userId, provider)
   },

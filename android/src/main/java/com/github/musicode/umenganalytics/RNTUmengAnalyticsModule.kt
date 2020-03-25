@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.facebook.react.bridge.*
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
+import com.umeng.commonsdk.statistics.common.DeviceConfig
+
 
 class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
@@ -36,6 +38,20 @@ class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext)
 
     override fun getName(): String {
         return "RNTUmengAnalytics"
+    }
+
+    @ReactMethod
+    fun getDeviceInfo(promise: Promise) {
+
+        val deviceId = DeviceConfig.getDeviceIdForGeneral(reactContext)
+        val mac = DeviceConfig.getMac(reactContext)
+
+        val map = Arguments.createMap()
+        map.putString("deviceId", deviceId)
+        map.putString("mac", mac)
+
+        promise.resolve(map)
+
     }
 
     @ReactMethod

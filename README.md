@@ -90,6 +90,13 @@ public static final int *;
 ```js
 import umengAnalytics from 'react-native-pure-umeng-analytics'
 
+// 集成测试，获取设备信息
+umengAnalytics.getDeviceInfo().then(data => {
+  data.deviceId
+  // android only
+  data.mac
+})
+
 // 帐号统计
 umengAnalytics.signIn('userId')
 umengAnalytics.signIn('userId', 'provider')
@@ -99,7 +106,7 @@ umengAnalytics.signOut()
 umengAnalytics.enterPage('pageName')
 umengAnalytics.leavePage('pageName')
 
-// 自定义事件
+// 自定义事件，eventId 需先在友盟后台注册之后才可以统计
 umengAnalytics.sendEvent('eventId')
 umengAnalytics.sendEventLabel('eventId', 'label')
 umengAnalytics.sendEventData('eventId', { key1: 'value1', key2: 'value2' })

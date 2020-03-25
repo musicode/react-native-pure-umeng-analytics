@@ -20,6 +20,17 @@ RCT_EXPORT_MODULE(RNTUmengAnalytics);
     [MobClick setAutoPageEnabled:NO];
 }
 
+// 获得设备信息，用于集成测试
+RCT_EXPORT_METHOD(getDeviceInfo:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+
+    NSString *deviceId =[UMConfigure deviceIDForIntegration];
+    
+    resolve(@{
+        @"deviceId": deviceId,
+    });
+    
+}
+
 // 账号统计
 RCT_EXPORT_METHOD(signIn:(NSString *)userId
                   provider:(NSString *)provider) {
