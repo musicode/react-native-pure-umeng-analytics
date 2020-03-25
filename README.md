@@ -48,14 +48,14 @@ buildTypes {
     debug {
         manifestPlaceholders = [
             UMENG_APP_KEY: '',
-            UMENG_APP_SECRET: '',
+            UMENG_PUSH_SECRET: '',
             UMENG_CHANNEL: '',
         ]
     }
     release {
         manifestPlaceholders = [
             UMENG_APP_KEY: '',
-            UMENG_APP_SECRET: '',
+            UMENG_PUSH_SECRET: '',
             UMENG_CHANNEL: '',
         ]
     }

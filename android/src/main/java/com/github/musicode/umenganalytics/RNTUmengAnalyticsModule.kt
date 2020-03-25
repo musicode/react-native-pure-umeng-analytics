@@ -16,11 +16,11 @@ class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext)
         fun init(app: Application, metaData: Bundle, debug: Boolean) {
 
             val appKey = metaData.getString("UMENG_APP_KEY", "").trim()
-            val appSecret = metaData.getString("UMENG_APP_SECRET", "").trim()
+            val pushSecret = metaData.getString("UMENG_PUSH_SECRET", "").trim()
             val channel = metaData.getString("UMENG_CHANNEL", "").trim()
 
             UMConfigure.setLogEnabled(debug)
-            UMConfigure.init(app, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE, appSecret)
+            UMConfigure.init(app, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE, pushSecret)
 
         }
 
