@@ -12,17 +12,18 @@
 
     <application>
 
+        <!-- value 统一前面加空格，避免读取 meta data 自动转型成数字 -->
         <meta-data
             android:name="UMENG_APP_KEY"
-            android:value="${UMENG_APP_KEY}"
+            android:value="\ ${UMENG_APP_KEY}"
         />
         <meta-data
             android:name="UMENG_APP_SECRET"
-            android:value="${UMENG_APP_SECRET}"
+            android:value="\ ${UMENG_APP_SECRET}"
         />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL}"
+            android:value="\ ${UMENG_CHANNEL}"
         />
 
     </application>

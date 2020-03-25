@@ -15,9 +15,9 @@ class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext)
         // 初始化友盟基础库
         fun init(app: Application, metaData: Bundle, debug: Boolean) {
 
-            val appKey = metaData.getString("UMENG_APP_KEY", "")
-            val appSecret = metaData.getString("UMENG_APP_SECRET", "")
-            val channel = metaData.getString("UMENG_CHANNEL", "")
+            val appKey = metaData.getString("UMENG_APP_KEY", "").trim()
+            val appSecret = metaData.getString("UMENG_APP_SECRET", "").trim()
+            val channel = metaData.getString("UMENG_CHANNEL", "").trim()
 
             UMConfigure.setLogEnabled(debug)
             UMConfigure.init(app, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE, appSecret)
@@ -25,7 +25,7 @@ class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext)
         }
 
         // 初始化友盟统计
-        fun analytics(app: Application, metaData: Bundle) {
+        fun analytics(app: Application) {
             // 手动采集
             MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.MANUAL)
         }
@@ -105,11 +105,11 @@ class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext)
     }
 
     override fun onHostResume() {
-        MobclickAgent.onResume(reactContext)
+        MobclickAgent.onResume(reactContext.currentActivity)
     }
 
     override fun onHostPause() {
-        MobclickAgent.onPause(reactContext)
+        MobclickAgent.onPause(reactContext.currentActivity)
     }
 
     override fun onHostDestroy() {

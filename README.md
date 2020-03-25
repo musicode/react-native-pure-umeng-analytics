@@ -1,6 +1,6 @@
 # react-native-pure-umeng-analytics
 
-友盟推送
+友盟统计
 
 ## Installation
 
@@ -69,9 +69,10 @@ override fun onCreate() {
     val metaData = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA).metaData
 
     // 初始化友盟基础库
+    // 第三个参数表示是否显示调试信息
     RNTUmengAnalyticsModule.init(this, metaData, false)
-    // 初始化友盟推送
-    RNTUmengAnalyticsModule.analytics(this, metaData)
+    // 初始化友盟统计
+    RNTUmengAnalyticsModule.analytics(this)
 }
 ```
 
