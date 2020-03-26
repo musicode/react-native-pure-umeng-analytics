@@ -6,7 +6,7 @@
 
 ```
 npm i react-native-pure-umeng-analytics
-// link below 0.60
+// 0.60 版本以下手动执行这句
 react-native link react-native-pure-umeng-analytics
 ```
 
@@ -62,6 +62,10 @@ buildTypes {
 }
 ```
 
+`UMENG_APP_KEY` 和 `UMENG_PUSH_SECRET` 来自`友盟推送`里的这两个字段，如下：
+
+![image](https://user-images.githubusercontent.com/2732303/77606227-ded8b680-6f51-11ea-9aa4-0378e79deaa7.png)
+
 在 `MainApplication` 的 `onCreate` 方法进行初始化，如下：
 
 ```kotlin
@@ -103,7 +107,8 @@ umengAnalytics.signIn('userId')
 umengAnalytics.signIn('userId', 'provider')
 umengAnalytics.signOut()
 
-// 页面统计
+// 页面统计，注意要配对调用，即调用 leavePage 前必须先调用 enterPage，
+// 调用 enterPage 之后，必须跟着一个 leavePage
 umengAnalytics.enterPage('pageName')
 umengAnalytics.leavePage('pageName')
 
