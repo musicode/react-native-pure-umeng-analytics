@@ -8,9 +8,9 @@
 
 RCT_EXPORT_MODULE(RNTUmengAnalytics);
 
-+ (void)init:(NSString *)appKey debug:(BOOL)debug {
++ (void)init:(NSString *)appKey channel:(NSString *)channel debug:(BOOL)debug {
 
-    [UMConfigure initWithAppkey:appKey channel:@"App Store"];
+    [UMConfigure initWithAppkey:appKey channel:channel];
     [UMConfigure setLogEnabled:debug];
 
 }

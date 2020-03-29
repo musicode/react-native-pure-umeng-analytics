@@ -22,7 +22,7 @@ react-native link react-native-pure-umeng-analytics
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   ...
-  [RNTUmengAnalytics init:@"appKey" debug:false];
+  [RNTUmengAnalytics init:@"appKey" channel:@"App Store" debug:false];
   [RNTUmengAnalytics analytics];
   return YES;
 }
