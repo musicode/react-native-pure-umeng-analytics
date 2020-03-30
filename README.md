@@ -12,6 +12,10 @@ react-native link react-native-pure-umeng-analytics
 
 ## Setup
 
+![image](https://user-images.githubusercontent.com/2732303/77606227-ded8b680-6f51-11ea-9aa4-0378e79deaa7.png)
+
+打开应用信息页面，安卓推送有 `Appkey` 和 `Umeng Message Secret` 两个字段，iOS 只有 `Appkey` 字段，后面将用这些字段初始化友盟。
+
 ### iOS
 
 修改 `AppDelegate.m`，如下
@@ -22,6 +26,9 @@ react-native link react-native-pure-umeng-analytics
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   ...
+  // 初始化友盟基础库
+  // channel 一般填 App Store，如果有测试环境，可按需填写
+  // debug 表示是否打印调试信息
   [RNTUmengAnalytics init:@"appKey" channel:@"App Store" debug:false];
   [RNTUmengAnalytics analytics];
   return YES;
@@ -61,10 +68,6 @@ buildTypes {
     }
 }
 ```
-
-`UMENG_APP_KEY` 和 `UMENG_PUSH_SECRET` 来自`友盟推送`里的这两个字段，如下：
-
-![image](https://user-images.githubusercontent.com/2732303/77606227-ded8b680-6f51-11ea-9aa4-0378e79deaa7.png)
 
 在 `MainApplication` 的 `onCreate` 方法进行初始化，如下：
 
@@ -107,8 +110,8 @@ umengAnalytics.signIn('userId')
 umengAnalytics.signIn('userId', 'provider')
 umengAnalytics.signOut()
 
-// 页面统计，注意要配对调用，即调用 leavePage 前必须先调用 enterPage，
-// 调用 enterPage 之后，必须跟着一个 leavePage
+// 页面统计，注意要配对调用
+// 不能连续调用 enterPage，也不能连续调用 leavePage
 umengAnalytics.enterPage('pageName')
 umengAnalytics.leavePage('pageName')
 
