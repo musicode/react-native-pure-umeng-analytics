@@ -3,6 +3,10 @@ import { NativeModules } from 'react-native'
 
 const { RNTUmengAnalytics } = NativeModules
 
+// enterPage 和 leavePage 必须对称调用
+// 在这里做一层保证
+let currentPage
+
 export default {
 
   getDeviceInfo() {
@@ -14,31 +18,37 @@ export default {
   },
 
   signOut() {
-    return RNTUmengAnalytics.signOut()
+    RNTUmengAnalytics.signOut()
   },
 
   enterPage(pageName) {
-    return RNTUmengAnalytics.enterPage(pageName)
+    if (!currentPage) {
+      RNTUmengAnalytics.enterPage(pageName)
+      currentPage = pageName
+    }
   },
 
   leavePage(pageName) {
-    return RNTUmengAnalytics.leavePage(pageName)
+    if (currentPage === pageName) {
+      RNTUmengAnalytics.leavePage(pageName)
+      currentPage = undefined
+    }
   },
 
   sendEvent(eventId) {
-    return RNTUmengAnalytics.sendEvent(eventId)
+    RNTUmengAnalytics.sendEvent(eventId)
   },
 
   sendEventLabel(eventId, label) {
-    return RNTUmengAnalytics.sendEventLabel(eventId, label)
+    RNTUmengAnalytics.sendEventLabel(eventId, label)
   },
 
   sendEventData(eventId, data) {
-    return RNTUmengAnalytics.sendEventData(eventId, data)
+    RNTUmengAnalytics.sendEventData(eventId, data)
   },
 
   sendEventCounter(eventId, data, counter) {
-    return RNTUmengAnalytics.sendEventCounter(eventId, data, counter)
+    RNTUmengAnalytics.sendEventCounter(eventId, data, counter)
   },
 
 }

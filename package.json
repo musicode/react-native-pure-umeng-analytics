@@ -1,6 +1,6 @@
 {
   "name": "react-native-pure-umeng-analytics",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "react native umeng analytics",
   "main": "index.js",
   "scripts": {
