@@ -6,8 +6,6 @@
 
 @implementation RNTUmengAnalytics
 
-RCT_EXPORT_MODULE(RNTUmengAnalytics);
-
 + (void)init:(NSString *)appKey channel:(NSString *)channel debug:(BOOL)debug {
 
     [UMConfigure initWithAppkey:appKey channel:channel];
@@ -19,6 +17,13 @@ RCT_EXPORT_MODULE(RNTUmengAnalytics);
     // 手动采集
     [MobClick setAutoPageEnabled:NO];
 }
+
+// 天知道为啥友盟需要用主线程，反正不用主线程它就报错
+- (dispatch_queue_t)methodQueue {
+    return dispatch_get_main_queue();
+}
+
+RCT_EXPORT_MODULE(RNTUmengAnalytics);
 
 // 获得设备信息，用于集成测试
 RCT_EXPORT_METHOD(getDeviceInfo:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
