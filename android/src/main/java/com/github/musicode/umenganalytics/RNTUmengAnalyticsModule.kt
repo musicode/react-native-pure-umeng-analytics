@@ -104,6 +104,11 @@ class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext)
         MobclickAgent.onEventValue(reactContext, eventId, map, counter)
     }
 
+    @ReactMethod
+    fun sendError(error: String) {
+        MobclickAgent.reportError(reactContext, error)
+    }
+
     override fun onHostResume() {
         MobclickAgent.onResume(reactContext.currentActivity)
     }

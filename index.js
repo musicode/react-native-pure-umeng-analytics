@@ -51,4 +51,11 @@ export default {
     RNTUmengAnalytics.sendEventCounter(eventId, data, counter)
   },
 
+  sendError(error) {
+    // 安卓才有这个接口
+    if (RNTUmengAnalytics.sendError) {
+      RNTUmengAnalytics.sendError(error)
+    }
+  }
+
 }
