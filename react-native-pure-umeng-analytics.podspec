@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.authors      = package['author']
   s.homepage     = package['homepage']
   s.platform     = :ios, "9.0"
-  s.frameworks   = "UserNotifications"
 
   s.source       = { :git => "https://github.com/musicode/react-native-pure-umeng-analytics.git", :tag => "v#{s.version}" }
   s.source_files  = "ios/**/*.{h,m}"
