@@ -37,17 +37,6 @@ react-native link react-native-pure-umeng-analytics
 
 ### Android
 
-`android/build.gradle` 添加友盟仓库.
-
-```
-allprojects {
-    repositories {
-        // add this line
-        maven { url 'https://dl.bintray.com/umsdk/release' }
-    }
-}
-```
-
 `android/app/build.gradle` 根据不同的包填写不同的配置，如下：
 
 ```

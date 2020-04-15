@@ -6,7 +6,7 @@ import com.facebook.react.bridge.*
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.commonsdk.statistics.common.DeviceConfig
-
+import java.lang.Exception
 
 class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
@@ -92,13 +92,20 @@ class RNTUmengAnalyticsModule(private val reactContext: ReactApplicationContext)
 
     @ReactMethod
     fun sendEventData(eventId: String, data: ReadableMap) {
-        MobclickAgent.onEventObject(reactContext, eventId, data.toHashMap())
+        val map = data.toHashMap()
+        // id，ts，du 是保留字段，不能作为 event id 及 key 的名称。
+        for ((key, _) in map) {
+            if (key == "id" || key == "ts" || key == "du") {
+                throw Exception("event data key can't be [$key].")
+            }
+        }
+        MobclickAgent.onEventObject(reactContext, eventId, map)
     }
 
     @ReactMethod
     fun sendEventCounter(eventId: String, data: ReadableMap, counter: Int) {
         val map = HashMap<String, String>()
-        for ((key,value) in data.toHashMap()){
+        for ((key, value) in data.toHashMap()) {
             map[key] = value as String
         }
         MobclickAgent.onEventValue(reactContext, eventId, map, counter)
