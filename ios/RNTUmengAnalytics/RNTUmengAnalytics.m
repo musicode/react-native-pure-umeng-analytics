@@ -2,7 +2,7 @@
 #import "RNTUmengAnalytics.h"
 
 #import <UMCommon/UMConfigure.h>
-#import <UMAnalytics/MobClick.h>
+#import <UMCommon/MobClick.h>
 
 @implementation RNTUmengAnalytics
 
