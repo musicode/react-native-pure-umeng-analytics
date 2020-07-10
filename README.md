@@ -96,6 +96,7 @@ umengAnalytics.getDeviceInfo().then(data => {
 
 // 帐号统计
 umengAnalytics.signIn('userId')
+// provider: 不能以下划线开头，使用大写字母和数字标识; 如果是上市公司，建议使用股票代码，比如 WB
 umengAnalytics.signIn('userId', 'provider')
 umengAnalytics.signOut()
 
